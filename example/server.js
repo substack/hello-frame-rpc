@@ -1,14 +1,7 @@
 var rpc = require('../');
 var methods = {
-    say: function (msg) {
-        var div = document.createElement('div');
-        div.textContent = msg;
-        document.body.appendChild(div);
-    }
+    multi: function (n, cb) { cb(n * 111) }
 };
-
 rpc.listen(methods, function (err, remote) {
-    remote.multi(5, function (n) {
-        console.log('n=', n);
-    });
+    remote.call('say', 'hello from the server!!!');
 });

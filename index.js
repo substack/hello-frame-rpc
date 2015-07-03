@@ -43,8 +43,8 @@ exports.listen = function (origin, methods, cb) {
         });
     }
     
-    function createRPC (p, origin) {
-        cb(null, RPC(p, p.parent, origin, methods));
+    function createRPC (p, o) {
+        cb(null, RPC(p, p.parent, o, methods));
     }
 };
 
@@ -70,9 +70,9 @@ exports.connect = function (src, methods, cb) {
                 replied = true;
                 clearTimeout(to);
                 
+                fn(location.protocol + '//' + location.host);
                 var rpc = RPC(window, frame.contentWindow, src, methods);
                 cb(null, rpc);
-                fn(location.protocol + '//' + location.host);
             }
         });
     }
