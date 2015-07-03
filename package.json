@@ -1,6 +1,6 @@
 {
   "name": "hello-frame-rpc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "client/server-style rpc for iframe postMessage communication",
   "main": "index.js",
   "directories": {
