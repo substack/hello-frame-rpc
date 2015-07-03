@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "parallelshell 'npm run build-server' 'npm run client-js')",
+    "build": "parallelshell 'npm run build-server' 'npm run build-client'",
     "build-client": "browserify client.js -o client/bundle.js",
     "build-server": "browserify server.js -o server/bundle.js",
     "watch": "parallelshell 'npm run watch-server' 'npm run watch-client'",
