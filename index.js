@@ -8,6 +8,16 @@ exports.listen = function (origin, methods, cb) {
         methods = origin;
         origin = '*';
     }
+    if (typeof origin === 'function') {
+        cb = origin;
+        methods = {};
+        origin = '*';
+    }
+    if (typeof methods === 'function') {
+        cb = methods;
+        methods = {};
+    }
+    
     if (origin === '*') {
         origin = function (o) { return true };
     }
@@ -38,6 +48,11 @@ exports.listen = function (origin, methods, cb) {
 };
 
 exports.connect = function (src, methods, cb) {
+    if (typeof methods === 'function') {
+        cb = methods;
+        methods = {};
+    }
+    
     var frame = loadIframe(src, function () {
         var hrpc = RPC(window, frame.contentWindow, src, {
             hello: function (origin, fn) {

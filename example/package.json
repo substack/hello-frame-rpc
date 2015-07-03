@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "build": "parallelshell 'npm run build-server' 'npm run client-js')",
+    "build-client": "browserify client.js -o client/bundle.js",
+    "build-server": "browserify server.js -o server/bundle.js",
+    "watch": "parallelshell 'npm run watch-server' 'npm run watch-client'",
+    "watch-client": "watchify client.js -o client/bundle.js -dv",
+    "watch-server": "watchify server.js -o server/bundle.js -dv",
+    "start": "parallelshell 'ecstatic -p 9000 server' 'ecstatic -p 9001 client'"
+  },
+  "devDependencies": {
+    "browserify": "^10.2.4",
+    "ecstatic": "~0.8.0",
+    "parallelshell": "^1.2.0"
+  }
+}
