@@ -13,20 +13,18 @@
     "load-iframe": "^1.0.0"
   },
   "devDependencies": {},
-  "scripts": {
-    "test": "tape test/*.js"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/substack/hello-frame-rpc.git"
   },
   "keywords": [
-    "postMessage",
     "iframe",
-    "window",
-    "window.parent",
+    "origin",
+    "postMessage",
     "rpc",
-    "origin"
+    "window",
+    "window.parent"
   ],
   "author": "substack",
   "license": "MIT",
