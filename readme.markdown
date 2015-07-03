@@ -86,6 +86,11 @@ With [npm](https://npmjs.com), do:
 npm install hello-frame-rpc
 ```
 
+# sponsors
+
+Thanks to [blockai](https://www.blockai.com) for sponsoring development of this
+project.
+
 # license
 
 MIT
