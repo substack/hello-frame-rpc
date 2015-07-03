@@ -1,0 +1,37 @@
+{
+  "name": "hello-frame-rpc",
+  "version": "1.0.0",
+  "description": "client/server-style rpc for iframe postMessage communication",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {
+    "frame-rpc": "^1.2.0",
+    "indexof": "^0.0.1",
+    "isarray": "^0.0.1",
+    "load-iframe": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/substack/hello-frame-rpc.git"
+  },
+  "keywords": [
+    "postMessage",
+    "iframe",
+    "window",
+    "window.parent",
+    "rpc",
+    "origin"
+  ],
+  "author": "substack",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/substack/hello-frame-rpc/issues"
+  },
+  "homepage": "https://github.com/substack/hello-frame-rpc#readme"
+}
