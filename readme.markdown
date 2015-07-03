@@ -67,10 +67,18 @@ Listen for incoming requests on `origin` and serve up `methods`.
 `cb(err, remote)` fires when a parent iframe successfully connects with
 `remote`, a [frame-rpc](https://npmjs.com/package/frame-rpc) handle.
 
+`origin` can be the string `'*'` (anything), an allowed string url, an array of
+allowed string urls, or a `function (x) {}` that will take the incoming origin
+as its argument and should return a boolean about whether the origin argument is
+allowed.
+
 The `remote` handle has `.call()` and `.apply()` methods to call functions on
 the remote endpoint with an optional callback as the last argument.
 
 ## rpc.connect(src, methods={}, cb)
+
+Connect to `src`, a url string to open in an iframe.
+`methods` will be exposed to the iframe.
 
 `cb(err, remote)` fires when the "server" iframe is fully connected with
 `remote`, a [frame-rpc](https://npmjs.com/package/frame-rpc) handle.
