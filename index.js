@@ -5,6 +5,7 @@ var indexof = require('indexof');
 
 exports.listen = function (origin, methods, cb) {
     if (typeof origin === 'object') {
+        cb = methods;
         methods = origin;
         origin = '*';
     }
@@ -53,13 +54,26 @@ exports.connect = function (src, methods, cb) {
         methods = {};
     }
     
-    var frame = loadIframe(src, function () {
+    var frame = loadIframe(src, sayhello);
+    var replied = false;
+    
+    var times = 0;
+    var to = setTimeout(function attempt () {
+        sayhello();
+        to = setTimeout(attempt, Math.max((times ++) * 100, 1000));
+    }, 50);
+    
+    function sayhello () {
         var hrpc = RPC(window, frame.contentWindow, src, {
             hello: function (origin, fn) {
+                if (replied) return;
+                replied = true;
+                clearTimeout(to);
+                
                 var rpc = RPC(window, frame.contentWindow, src, methods);
                 cb(null, rpc);
                 fn(location.protocol + '//' + location.host);
             }
         });
-    });
+    }
 };
