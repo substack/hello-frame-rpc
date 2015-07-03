@@ -44,7 +44,8 @@ exports.listen = function (origin, methods, cb) {
     }
     
     function createRPC (p, o) {
-        cb(null, RPC(p, p.parent, o, methods));
+        var rpc = RPC(p, p.parent, o, methods);
+        if (cb) cb(null, rpc);
     }
 };
 
@@ -72,7 +73,7 @@ exports.connect = function (src, methods, cb) {
                 
                 fn(location.protocol + '//' + location.host);
                 var rpc = RPC(window, frame.contentWindow, src, methods);
-                cb(null, rpc);
+                if (cb) cb(null, rpc);
             }
         });
     }
