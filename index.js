@@ -14,10 +14,6 @@ exports.listen = function (origin, methods, cb) {
         methods = {};
         origin = '*';
     }
-    if (typeof methods === 'function') {
-        cb = methods;
-        methods = {};
-    }
     
     if (origin === '*') {
         origin = function (o) { return true };
@@ -50,11 +46,6 @@ exports.listen = function (origin, methods, cb) {
 };
 
 exports.connect = function (src, methods, cb) {
-    if (typeof methods === 'function') {
-        cb = methods;
-        methods = {};
-    }
-    
     var frame = loadIframe(src, sayhello);
     var replied = false;
     
