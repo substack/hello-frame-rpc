@@ -16,7 +16,7 @@ var rpc = require('hello-frame-rpc');
 var methods = {
     multi: function (n, cb) { cb(n * 111) }
 };
-rpc.listen(methods, function (err, remote) {
+rpc.listen('*', methods, function (err, remote) {
     remote.call('say', 'hello from the server!!!');
 });
 ```
@@ -60,9 +60,13 @@ Now visit `http://localhost:9001` in a browser. You will see a greeting,
 var rpc = require('hello-frame-rpc')
 ```
 
-## rpc.listen(origin='*', methods={}, cb)
+## rpc.listen(origin, methods, cb)
 
 Listen for incoming requests on `origin` and serve up `methods`.
+
+`methods` can be an object mapping names to methods the remote endpoint can call
+or a function `methods(remote)` that will get a handle to the `remote` frame-rpc
+instance and should return an object mapping names to methods.
 
 `cb(err, remote)` fires when a parent iframe successfully connects with
 `remote`, a [frame-rpc](https://npmjs.com/package/frame-rpc) handle.
@@ -75,10 +79,14 @@ allowed.
 The `remote` handle has `.call()` and `.apply()` methods to call functions on
 the remote endpoint with an optional callback as the last argument.
 
-## rpc.connect(src, methods={}, cb)
+## rpc.connect(src, methods, cb)
 
 Connect to `src`, a url string to open in an iframe.
 `methods` will be exposed to the iframe.
+
+`methods` can be an object mapping names to methods the remote endpoint can call
+or a function `methods(remote)` that will get a handle to the `remote` frame-rpc
+instance and should return an object mapping names to methods.
 
 `cb(err, remote)` fires when the "server" iframe is fully connected with
 `remote`, a [frame-rpc](https://npmjs.com/package/frame-rpc) handle.

@@ -4,17 +4,6 @@ var isarray = require('isarray');
 var indexof = require('indexof');
 
 exports.listen = function (origin, methods, cb) {
-    if (typeof origin === 'object') {
-        cb = methods;
-        methods = origin;
-        origin = '*';
-    }
-    if (typeof origin === 'function') {
-        cb = origin;
-        methods = {};
-        origin = '*';
-    }
-    
     if (origin === '*') {
         origin = function (o) { return true };
     }
